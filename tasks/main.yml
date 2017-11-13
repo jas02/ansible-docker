@@ -1,7 +1,12 @@
 ---
-- name: install python-setuptools (contains pip)
+- name: install epel-release
   yum:
-    name: python-setuptools
+    name: epel-release
+    state: present
+
+- name: install python-pip
+  yum:
+    name: python-pip
     state: present
 
 - name: install docker-py
