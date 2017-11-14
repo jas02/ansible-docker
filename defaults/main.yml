@@ -3,4 +3,4 @@ docker:
   version: 1.12.6
   add_registry: onecloud-docker-internal.repo.onecloud.tieto.com
   block_registry: docker.io
-  insecure_registry: "{{ docker.add_registry }}"
+  insecure_registry: onecloud-docker-internal.repo.onecloud.tieto.com
