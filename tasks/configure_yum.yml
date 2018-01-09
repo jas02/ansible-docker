@@ -1,0 +1,33 @@
+---
+- name: start and enable docker daemon
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: create Docker systemd service folder
+  file:
+    path: /etc/systemd/system/docker.service.d
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
+
+- name: create /etc/systemd/system/docker.service.d/docker.conf
+  template:
+    src: docker.conf.j2
+    dest: /etc/systemd/system/docker.service.d/docker.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart docker
+
+- name: create /etc/sysconfig/docker
+  template:
+    src: docker.j2
+    dest: /etc/sysconfig/docker
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart docker
+  when: docker.insecure_registry != ""

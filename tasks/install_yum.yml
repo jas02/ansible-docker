@@ -1,0 +1,30 @@
+---
+- name: install epel-release
+  yum:
+    name: epel-release
+    state: present
+
+- name: install python-pip
+  yum:
+    name: python-pip
+    state: present
+
+- name: install docker-py
+  pip:
+    name: docker-py
+    state: present
+
+- name: add docker repository
+  yum_repository:
+    name: docker
+    description: docker yum repo
+    baseurl: https://yum.dockerproject.org/repo/main/centos/{{ ansible_distribution_major_version }}/
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: https://yum.dockerproject.org/gpg
+
+- name: install docker
+  yum:
+    name: docker-engine-{{ docker.version }}
+    state: present
+    update_cache: yes
