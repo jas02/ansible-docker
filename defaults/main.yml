@@ -1,5 +1,6 @@
 ---
-docker_version: 17.03
+docker_version: 17.09
+docker_ubuntu_package_version: "{{ docker_version }}.0~ce-0~ubuntu"
 docker_add_registry: onecloud-docker-internal.repo.onecloud.tieto.com
 docker_block_registry: docker.io
 docker_insecure_registry: onecloud-docker-internal.repo.onecloud.tieto.com
