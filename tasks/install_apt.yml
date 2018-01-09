@@ -21,7 +21,8 @@
     - "ca-certificates"
     - "curl"
     - "software-properties-common"
-    
+    - "python-pip"
+
 - name: install docker-py
   pip:
     name: docker-py
